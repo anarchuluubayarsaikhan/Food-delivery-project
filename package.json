@@ -40,8 +40,7 @@
     "daisyui": "^4.12.13",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",
-    "dotenv": "^16.4.5",
-    "embla-carousel-autoplay": "^8.3.0",
+
     "embla-carousel-react": "^8.3.0",
     "form": "^0.2.5",
     "formik": "^2.4.6",
