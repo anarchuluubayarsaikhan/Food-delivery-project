@@ -4,7 +4,7 @@ import Nav from './nav';
 
 export const SchoolPageHeader = () => {
   return (
-    <div className="p-4 min-[480px]:p-, min-[768px]:p-12 min-[1279]:p-16 flex justify-between items-center">
+<div className="p-4 min-[480px]:p-, min-[768px]:p-12 min-[1279px]:p-16 flex justify-between items-center">
       <div className=" relative">
         <div className="absolute -inset-2 rounded-lg bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-sky-600 via-blue-600 to-purple-600 opacity-50 blur-2xl"></div>
         <div className="relative flex flex-col gap-1 w-full  items-center justify-center border-none rounded-lg bg-transparent">
