@@ -1,6 +1,7 @@
 import { AdminLayout } from '@/components/adminLayout';
 
 export default function App() {
+
 return (
 
 <AdminLayout>
@@ -10,6 +11,7 @@ return (
 </AdminLayout>
 
 )
+
 
 }
 
