@@ -30,7 +30,7 @@ const SignInSchema = z.object({
 
 type SignInSchemaType = z.infer<typeof SignInSchema>;
 
-export default function LoginForm() {
+export default function Signin() {
   const {
     register,
     handleSubmit,
@@ -71,7 +71,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="max-w-md my-12 w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200 ml-6">🤗 Welcome to Bidscape's admin 🤗</h2>
 
       <form className="my-8 form" onSubmit={handleSubmit(onSubmit)}>
