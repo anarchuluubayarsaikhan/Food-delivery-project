@@ -1,11 +1,11 @@
 'use client';
+import { Button } from '@/components/ui/button';
 import Cookies from 'js-cookie';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FaRegHeart } from 'react-icons/fa';
 import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
-import { Button } from '../ui/button';
 
 export default function Header() {
   // useEffect(() => {
