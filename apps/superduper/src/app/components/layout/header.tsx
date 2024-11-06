@@ -14,7 +14,6 @@ import { useAuthStore } from '../auth/useAuthStore';
 const ably = new Ably.Realtime(process.env.NEXT_PUBLIC_ABLYKEY || '');
 
 export type notifications = {
-
   _id: string;
   message: string;
   userId: string;
@@ -114,10 +113,10 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-10 mx-6">
           <button onClick={sell} className="bg-white hover:border-b-[1px] hover:border-black">
-          Зарах
+            Зарах
           </button>
           <Link href="/Help" className="bg-white hover:border-b-[1px] hover:border-black">
-          Тусламж
+            Тусламж
           </Link>
 
           <FaRegHeart size={24} color="blue" onClick={save} />
