@@ -5,6 +5,7 @@ import { ProductItem } from '@/app/components/productItem';
 import { Bid } from '@/components/Bid';
 import { BidDialog } from '@/components/bidDialog';
 import { BidType } from '@/components/bidType';
+
 import { HelpCenter } from '@/components/helpCenter';
 
 import { PlacedBidDialog } from '@/components/placedBidDialog';
@@ -15,10 +16,10 @@ import * as Ably from 'ably';
 import { AblyProvider, ChannelProvider, useChannel } from 'ably/react';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
-import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
 import { toast, Toaster } from 'sonner';
 import * as yup from 'yup';
+import '../../../styles.css';
 import { RealtimeNotif } from '../../layout';
 
 const client = new Ably.Realtime({ key: process.env.NEXT_PUBLIC_ABLYKEY });
@@ -58,7 +59,9 @@ function Realtime({ chatId }: { chatId: string }) {
     bid: yup
       .number()
       .required('Хүчинтэй үнийн дүнг оруулна уу')
-      .min(maximumBid + 500, `хамгийн бага үнийн санал ${maximumBid + 500} ₮`),
+
+      .min(maximumBid + 500, `хамгийн бага үнийн санал нь ${maximumBid + 500} ₮`),
+
   });
 
   const formik = useFormik({
@@ -210,8 +213,15 @@ function Realtime({ chatId }: { chatId: string }) {
     return (
       <div className="min-h-screen">
         <div className=" absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] items-center flex">
-          <Image src={'/images/spinner.svg'} alt="loading" width={100} height={100} />
-          <div className="font-bold text-3xl">Ачааллаж байна...</div>
+
+          <div className="loader">
+            <div className="loader-bar bar-1"></div>
+            <div className="loader-bar bar-2"></div>
+            <div className="loader-bar bar-3"></div>
+            <div className="loader-bar bar-4"></div>
+          </div>
+          <div className="font-bold text-3xl">Ачаалж байна...</div>
+
         </div>
       </div>
     );
@@ -238,31 +248,13 @@ function Realtime({ chatId }: { chatId: string }) {
             setIsSticky={setIsSticky}
           />
           <Safity oneProduct={oneProduct} />
-          <HelpCenter oneProduct={oneProduct} />
-          {/* {isSticky && (
-            <BidSticky
-              formikSetFieldValue={formik.setFieldValue}
-              formikTouched={formik.touched}
-              oneProduct={oneProduct}
-              formikErrors={formik.errors}
-              sendBid={sendBid}
-              bids={bids}
-              open={open}
-              setOpen={setOpen}
-              formikValues={formik.values}
-              formikHandleChange={formik.handleChange}
-              maximumBid={maximumBid}
-              isSticky={isSticky}
-              setIsSticky={setIsSticky}
-            />
-          )} */}
         </div>
       </div>
       {open && <div className="absolute inset-0 bg-slate-500 opacity-50"></div>}
       {open && <BidDialog bid={formik.values.bid} open={open} setOpen={setOpen} />}
       <PlacedBidDialog secondDialog={secondDialog} setSecondDialog={setSecondDialog} bid={dialogsBid} />
 
-      <div className="grid grid-cols-3 gap-10 w-full">
+      <div className="grid grid-cols-3 gap-10 w-full pt-10">
         {products.slice(0, 20).map((product) => (
           <ProductItem isClick={isClick} product={product} favourite={value?.favourite || []} key={product._id} onClickFavourite={() => handleFavourite(product._id)} />
         ))}
