@@ -104,6 +104,22 @@ export default function Page() {
     try {
       const response = await fetcher().get(`api/school-data`);
       setCurrentSchool(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getCourses() {
+    try {
+      setIsLoading(true);
+      const currentSchool = await getCurrentSchool();
+      const response = await fetcher().get(`api/coursesOfSchool/${currentSchool?._id}`);
+      setCourses(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
       return setLoading(false);
     } catch (error) {}
   }
