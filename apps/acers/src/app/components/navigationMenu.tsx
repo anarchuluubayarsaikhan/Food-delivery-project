@@ -2,7 +2,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 
 export default function HeaderNavigationMenu() {
   return (
-    <div>
+    <div className="mt-4">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -60,7 +60,7 @@ export default function HeaderNavigationMenu() {
         </NavigationMenuList>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Ingredients</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Найрлага</NavigationMenuTrigger>
             <NavigationMenuContent>
               <NavigationMenuLink>
                 <div className="flex gap-x-20 py-8 px-[60px] bg-white">
@@ -101,7 +101,6 @@ export default function HeaderNavigationMenu() {
                     <li>Шинэ жил</li>
                     <li></li>
                   </ul>
-
                 </div>
               </NavigationMenuLink>
             </NavigationMenuContent>

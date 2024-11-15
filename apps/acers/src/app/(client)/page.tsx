@@ -4,10 +4,11 @@ import axios from 'axios';
 import { decode } from 'jsonwebtoken';
 import { Bookmark } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { HandyCarousel } from './components/homePageComponents/handyCarousel';
 import { Stars } from './components/itemComponents/stars';
 import { formatTitle } from './recipe/[slug]/page';
+import TextBackground from './wrapper';
+import { FavoriteRecipes } from './components/homePageComponents/favorites';
 
 const formatSlugForNavigation = (slug: string) => {
   return slug.toLowerCase();
@@ -74,7 +75,7 @@ const AvailableContent = () => {
 
   return (
     <div className="border-t-2 border-[#222222] max-w-[1110px] w-full m-auto flex flex-col gap-4">
-      <span className="text-[23px]">{role} хэрэглэгчдэд </span>
+      <TextBackground />
       <HandyCarousel data={data} name="available" />
     </div>
   );
@@ -150,7 +151,6 @@ const OccasionMeals = () => {
 };
 
 const RecipeOfTheDay = () => {
-  const { slug } = useParams();
   const [data, setData] = useState({
     img: 'https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg?semt=ais_hybrid',
     title: 'Malaay Qumbe (Coconut Fish Curry)',
@@ -162,17 +162,12 @@ const RecipeOfTheDay = () => {
   });
 
   const getRecipeOfTheDay = async () => {
-    if (slug) {
-      const res = await axios.get(`/api/recipe/${slug}`);
-      setData(res.data[0]);
-    }
+    const res = await axios.get(`/api/recipe/trending`);
+    setData(res.data[0]);
   };
-
   useEffect(() => {
-    if (slug) {
-      getRecipeOfTheDay();
-    }
-  }, [slug]);
+    getRecipeOfTheDay();
+  }, []);
 
   const { img, title, description, rating, ratingNum, id, prepTime } = data;
   const formatedTitle = formatTitle(title);
