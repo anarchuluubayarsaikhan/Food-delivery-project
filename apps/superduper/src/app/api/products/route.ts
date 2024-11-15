@@ -55,7 +55,9 @@ export async function PUT(request: Request) {
 
     const body = await request.json();
 
-    const { searchValue, userId, page, limit, categoryId } = body;
+
+    const { searchValue, userId, status, page, limit, categoryId } = body;
+    if (status) product.status = status;
 
     if (categoryId) product.categoryId = categoryId;
 
