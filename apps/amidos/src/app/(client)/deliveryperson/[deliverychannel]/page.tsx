@@ -3,9 +3,16 @@ import { useGeolocation } from '@uidotdev/usehooks';
 import { APIProvider, AdvancedMarker, Map, useMap, useMapsLibrary } from '@vis.gl/react-google-maps';
 import * as Ably from 'ably';
 import { AblyProvider, ChannelProvider, useChannel, useConnectionStateListener } from 'ably/react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const client = new Ably.Realtime({ key: 'Nh6tIw.Klcmeg:giWLIzmJQ9jQ_ovhkmin61JtSF5QScEZb_EQgxLTr5I' });
+const navs = [
+  { name: 'БИДНИЙ ТУХАЙ', link: '/' },
+  { name: 'MЕНЮ', link: '/menu' },
+  { name: 'ГАЛЛЕРЕЙ', link: '/gallery' },
+  { name: 'ЗАХИАЛГА', link: '/order' },
+];
 
 export default function Deliveryperson({ params }: { params: { deliverychannel: string } }) {
   const state = useGeolocation();
@@ -27,10 +34,17 @@ export default function Deliveryperson({ params }: { params: { deliverychannel: 
   } else {
     return (
       <div>
+        <div className="flex bg-black gap-4 justify-center p-6 w-full">
+          {navs.map((nav) => (
+            <Link className="text-white" key={nav.name} href={nav.link}>
+              {nav.name}
+            </Link>
+          ))}
+        </div>
         <AblyProvider client={client}>
           <ChannelProvider channelName={deliverychannel}>
-            <div style={{ height: '500px', width: 'full' }} className="relative">
-              <APIProvider apiKey="AIzaSyCYuf3C9btTOUo7_OddJlPg0rjJuwLWf_I">
+            <div style={{ height: '800px', width: 'full' }} className="relative">
+              <APIProvider apiKey="AIzaSyCu10YbsxRT9_JxBAIjk8BImy7zjgSAKOE">
                 <Map defaultCenter={position} defaultZoom={10} mapId="myMap" fullscreenControl={false}>
                   <AdvancedMarker position={position} />
                   <Directions latitude={latitude} longitude={longitude} deliverychannel={deliverychannel} />

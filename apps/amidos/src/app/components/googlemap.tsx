@@ -20,7 +20,7 @@ export function Googlemap() {
   } else {
     return (
       <div style={{ height: '500px', width: 'full' }}>
-        <APIProvider apiKey="AIzaSyCYuf3C9btTOUo7_OddJlPg0rjJuwLWf_I">
+        <APIProvider apiKey="AIzaSyCu10YbsxRT9_JxBAIjk8BImy7zjgSAKOE">
           <Map defaultCenter={position} defaultZoom={10} mapId="myMap" fullscreenControl={false}>
             <AdvancedMarker position={position} />
           </Map>

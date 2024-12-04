@@ -2,7 +2,12 @@
 
 import { Sidebar } from 'flowbite-react';
 import { HiChartPie, HiShoppingBag, HiTable, HiUser } from 'react-icons/hi';
-
+function logout() {
+  localStorage.removeItem('accesstoken');
+  setTimeout(() => {
+    window.location.href = '/login';
+  }, 1000);
+}
 export default function LeftBar() {
   return (
     <div>
@@ -40,7 +45,7 @@ function Component1() {
               Админ
             </Sidebar.Item>
             <Sidebar.Item href="#" icon={HiTable} className="text-2xl italic hover:text-[#52071B]">
-              Гарах
+              <button onClick={() => logout()}>Гарах</button>
             </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>

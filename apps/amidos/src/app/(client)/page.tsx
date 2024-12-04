@@ -1,4 +1,5 @@
 'use client';
+import Footer from '@/components/footer';
 import { Swipercomments } from '@/components/swipercomments';
 import { Swipersnew } from '@/components/swiperimage';
 import { Food } from '@/lib/types';
@@ -70,6 +71,7 @@ export default function Home() {
       <Aboutupper />
       <Swipercomments />
       <Googlemap />
+      <Footer />
     </div>
   );
 }

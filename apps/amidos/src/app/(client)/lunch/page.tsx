@@ -1,4 +1,5 @@
 'use client';
+import Footer from '@/app/components/footer';
 import { Button } from '@/app/components/ui/button';
 import { Swipersnew } from '@/components/swiperimage';
 import { Food } from '@/lib/types';
@@ -51,7 +52,9 @@ export default function Menu() {
   }, []);
 
   const choose = (id: string) => {
+    setLoadingbutton(true);
     router.push(`/lunch?id=${id}`);
+    setLoadingbutton(false);
   };
 
   const navs = [
@@ -89,7 +92,9 @@ export default function Menu() {
     <>
       {' '}
       {food.length === 0 && loading ? (
-        <span className="loading loading-spinner loading-sm text-center">Уншиж байна та түр хүлээнэ үү...</span>
+        <div className="flex justify-center items-center h-screen">
+          <div className="w-8 h-8 border-8 border-t-transparent border-black border-solid rounded-full animate-spin"></div>
+        </div>
       ) : (
         <div>
           <div className="flex bg-black gap-4 justify-center p-6 w-full">
@@ -137,7 +142,7 @@ export default function Menu() {
                         Сагсанд нэмэх
                       </Button>
                       <Button variant="amidos" className="row-1" onClick={() => choose(foodItem.id)}>
-                        {loading ? 'Уншиж байна' : ' Сонгох'}
+                        {loadingbutton ? <div className="w-8 h-8 border-8 border-t-transparent border-black border-solid rounded-full animate-spin"></div> : ' Сонгох'}
                       </Button>
                     </div>
                   </div>
@@ -145,6 +150,7 @@ export default function Menu() {
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       )}
     </>

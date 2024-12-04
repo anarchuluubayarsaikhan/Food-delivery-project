@@ -68,14 +68,16 @@ export default function Dialogs() {
   ];
   return (
     <>
-      {loading ? (
-        <span className="loading loading-dots loading-md"></span>
-      ) : (
-        <div>
-          <div className="w-full mx-auto flex mt-20 md:mx-auto">
-            <div className="relative mx-auto">
-              <Dialog open={searchid ? true : false}>
-                <DialogContent>
+      <div>
+        <div className="w-full mx-auto flex mt-20 md:mx-auto">
+          <div className="relative mx-auto">
+            <Dialog open={searchid ? true : false}>
+              <DialogContent>
+                {loading ? (
+                  <div className="flex justify-center items-center h-full">
+                    <div className="w-8 h-8 border-8 border-t-transparent border-black border-solid rounded-full animate-spin"></div>
+                  </div>
+                ) : (
                   <div className="bg-white relative m-auto flex flex-col">
                     <button onClick={() => close()} className="self-end mb-6">
                       <X className="h-4 w-4" />
@@ -105,12 +107,12 @@ export default function Dialogs() {
                       {loadingbutton ? 'Уншиж байна' : ' Захиалах'}
                     </Button>
                   </div>
-                </DialogContent>
-              </Dialog>
-            </div>
+                )}
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

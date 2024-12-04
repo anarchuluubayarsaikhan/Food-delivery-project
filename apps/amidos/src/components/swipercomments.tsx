@@ -41,7 +41,7 @@ export function Swipercomments() {
           className="mySwiper my-16 "
         >
           {comments.map((comment) => (
-            <SwiperSlide className="flex  flex-col gap-7 px-6 py-20 border bg-white  " key={comment.title}>
+            <SwiperSlide className="flex  flex-col gap-7 px-6 py-20 border bg-white max-h-48 " key={comment.title}>
               <div className="flex ">
                 <Star color="#FFEA00" fill="#FFEA00" />
                 <Star color="#FFEA00" fill={comment.star !== 1 ? '#FFEA00' : 'white'} />

@@ -35,7 +35,7 @@ export function Swipersnew() {
         className="mySwiper"
       >
         {specialFood.map((special) => (
-          <SwiperSlide key={special._id} onClick={() => choose(special.id)} className="rounded-md mb-20">
+          <SwiperSlide key={special._id} onClick={() => choose(special.id)} className="rounded-md mb-20 hover:cursor-pointer">
             <Image src={special.photos} width={600} height={300} alt="Image" className="max-h-[300px] aspect-video object-cover rounded-md ml-3" />
             <div className="flex flex-col absolute left-[22px] bottom-[13px]">
               <div className="text-white md:text-2xl font-bold text-base self-start">{special.name}</div>
